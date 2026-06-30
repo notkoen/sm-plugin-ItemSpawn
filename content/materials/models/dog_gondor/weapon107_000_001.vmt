@@ -1,0 +1,13 @@
+VertexLitGeneric
+{
+	$basetexture "models/dog_gondor/weapon107_000_001"
+	$bumpmap "models/dog_gondor/weapon107_000_002"
+	$translucent "1"
+	$envmap "env_cubemap"
+	$normalmapalphaenvmapmask "1"
+	$selfillum "1"
+	$phong "1"
+	$phongexponent "35"
+	$phongboost" "2"
+	$phongfresnelranges" "[0.05 0.5 1]"
+}

@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture "models/barrel01b/wood_barrel01b"
+	$surfaceprop "wood_barrel"
+}

@@ -1,0 +1,16 @@
+VertexLitGeneric
+{
+	$basetexture "models/player/slow/amberlyn/lotr/balrog/slow_body"
+	$selfillum "1"
+
+	"Proxies"
+	{
+		"Sine"
+		{
+			"resultVar" "$alpha"
+			"sineperiod" "0"
+			"sinemin" ".75"
+			"sinemax" ".75"
+		}
+	}
+}

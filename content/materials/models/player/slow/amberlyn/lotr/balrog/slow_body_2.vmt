@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture "models/player/slow/amberlyn/lotr/balrog/slow_body"
+	$selfillum "1"
+}

@@ -1,0 +1,5 @@
+VertexLitGeneric
+{
+	$basetexture "de_dust/rockwall01"
+	$surfaceprop "concrete"
+}
