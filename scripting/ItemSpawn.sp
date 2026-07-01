@@ -165,8 +165,8 @@ public void OnMapStart()
 	AddFileToDownloadsTable("models/staff/staff.phy");
 	// AddFileToDownloadsTable("models/staff/staff.sw.vtx");
 	AddFileToDownloadsTable("models/staff/staff.vvd");
-	AddFileToDownloadsTable("materials/models/Staff/staffofmagnus.vmt");
-	AddFileToDownloadsTable("materials/models/Staff/staffofmagnus.vtf");
+	AddFileToDownloadsTable("materials/models/staff/staffofmagnus.vmt");
+	AddFileToDownloadsTable("materials/models/staff/staffofmagnus.vtf");
 
 	// Earth Prop
 	PrecacheModel("models/ffxii/earthmodel1.mdl");
