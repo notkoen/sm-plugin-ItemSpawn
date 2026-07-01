@@ -1,6 +1,0 @@
-VertexLitGeneric
-{
-	$basetexture "models/staff/staffofmagnus"
-	$nofog "1"
-	$model "1"
-}
