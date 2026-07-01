@@ -1,4 +1,5 @@
-public Action Command_Earth(int client, int argc) {
+public Action Command_Earth(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_Earth(int client, int argc) {
 	return Plugin_Handled;
 }
 
-void SpawnEarthStaff(float fOrigin[3], int client = -1) {
+void SpawnEarthStaff(float fOrigin[3], int client = -1)
+{
 	float fOriginTemp[3];
 
 	// weapon_knife.
@@ -144,25 +146,26 @@ void SpawnEarthStaff(float fOrigin[3], int client = -1) {
 
 	g_iCounter++;
 
-	if (client > 0) {
+	if (client > 0)
+	{
 		int weaponSlot = SDKCall(SDKCall_GetSlot, iPistol);
 		int weaponInSlot = GetPlayerWeaponSlot(client, weaponSlot);
-		if (weaponInSlot != -1) {
+		if (weaponInSlot != -1)
 			CS_DropWeapon(client, weaponInSlot, false);
-		}
 
-		if (SDKCall(SDKCall_BumpWeapon, client, iPistol)) {
+		if (SDKCall(SDKCall_BumpWeapon, client, iPistol))
 			SDKCall(SDKCall_OnPickedUp, iPistol, client);
-		}
 	}
 }
 
-public void EarthStaffPickup(const char[] output, int caller, int activator, float delay) {
+public void EarthStaffPickup(const char[] output, int caller, int activator, float delay)
+{
 	ServerCommand("say ** %N has picked up the Earth-Staff **", activator);
 	PrintToChat(activator, "Right Click with Knife = Use.");
 }
 
-public void EarthStaffUse(const char[] output, int caller, int activator, float delay) {
+public void EarthStaffUse(const char[] output, int caller, int activator, float delay)
+{
 	CreateTimer(0.75, SpawnEarth, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
 }
 

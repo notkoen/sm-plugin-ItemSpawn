@@ -1,4 +1,5 @@
-public Action Command_Jumper(int client, int argc) {
+public Action Command_Jumper(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_Jumper(int client, int argc) {
 	return Plugin_Handled;
 }
 
-public void SpawnJumper(float fOrigin[3]) {
+public void SpawnJumper(float fOrigin[3])
+{
 	float fOriginTemp[3];
 
 	// weapon_knife.
@@ -154,15 +156,16 @@ public void SpawnJumper(float fOrigin[3]) {
 	g_iCounter++;
 }
 
-public void JumperPickup(const char[] output, int caller, int activator, float delay) {
+public void JumperPickup(const char[] output, int caller, int activator, float delay)
+{
 	ServerCommand("say ** %N has picked up Jumper **", activator);
 	PrintToChat(activator, "RIGHT CLICK = Jump Boost");
-	if (ZR_IsClientHuman(activator)) {
+	if (ZR_IsClientHuman(activator))
 		CreateTimer(2.0, EquipWeapons, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
-	}
 }
 
-public void JumperUse(const char[] output, int caller, int activator, float delay) {
+public void JumperUse(const char[] output, int caller, int activator, float delay)
+{
 	float fPushVector[3];
 	fPushVector[0] = 0.0;
 	fPushVector[1] = 0.0;

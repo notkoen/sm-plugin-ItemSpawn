@@ -1,4 +1,5 @@
-public Action Command_WhiteKnight(int client, int argc) {
+public Action Command_WhiteKnight(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_WhiteKnight(int client, int argc) {
 	return Plugin_Handled;
 }
 
-public void SpawnWhiteKnight(float fOrigin[3]) {
+public void SpawnWhiteKnight(float fOrigin[3])
+{
 	float fOriginTemp[3];
 
 	// weapon_knife.
@@ -601,7 +603,8 @@ public void SpawnWhiteKnight(float fOrigin[3]) {
 	g_iCounter++;
 }
 
-public void WhiteKnightPickup(const char[] output, int caller, int activator, float delay) {
+public void WhiteKnightPickup(const char[] output, int caller, int activator, float delay)
+{
 	ServerCommand("say ** %N has picked up the White Knight **", activator);
 	PrintToChat(activator, " LEFT CLICK = ATTACK and RIGHT CLICK = SHIELD.");
 	CreateTimer(2.0, EquipWeapons, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
@@ -609,7 +612,6 @@ public void WhiteKnightPickup(const char[] output, int caller, int activator, fl
 
 public void WhiteKnightKill(const char[] output, int caller, int activator, float delay)
 {
-	if (IsValidClient(activator)) {
+	if (IsValidClient(activator))
 		ServerCommand("say ** %N has killed the White Knight **", activator);
-	}
 }

@@ -1,4 +1,5 @@
-public Action Command_Vortigaunt(int client, int argc) {
+public Action Command_Vortigaunt(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_Vortigaunt(int client, int argc) {
 	return Plugin_Handled;
 }
 
-public void SpawnVortigaunt(float fOrigin[3]) {
+public void SpawnVortigaunt(float fOrigin[3])
+{
 	char sBuffer[256];
 	float fOriginTemp[3];
 
@@ -287,7 +289,8 @@ public void SpawnVortigaunt(float fOrigin[3]) {
 	g_iCounter ++;
 }
 
-public void VortigauntPickup(const char[] output, int caller, int activator, float delay) {
+public void VortigauntPickup(const char[] output, int caller, int activator, float delay)
+{
 	char sBuffer[128];
 	Format(sBuffer, sizeof(sBuffer), "say ** %N has picked up Vortigaunt **", activator);
 	SetVariantString(sBuffer);

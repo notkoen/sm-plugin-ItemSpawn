@@ -1,4 +1,5 @@
-public Action Command_HumanDog(int client, int argc) {
+public Action Command_HumanDog(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_HumanDog(int client, int argc) {
 	return Plugin_Handled;
 }
 
-public void SpawnHumanDog(float fOrigin[3]) {
+public void SpawnHumanDog(float fOrigin[3])
+{
 	float fOriginTemp[3];
 
 	// weapon_knife.
@@ -155,13 +157,15 @@ public void SpawnHumanDog(float fOrigin[3]) {
 	g_iCounter++;
 }
 
-public void HumanDogPickup(const char[] output, int caller, int activator, float delay) {
+public void HumanDogPickup(const char[] output, int caller, int activator, float delay)
+{
 	ServerCommand("say ** %N has picked up Human Dog **", activator);
 	PrintToChat(activator, " RIGHT CLICK with your KNIFE to leave a present for the Zombies (max 4)");
 	CreateTimer(2.0, EquipWeapons, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
 }
 
-public void HumanDogUse(const char[] output, int caller, int activator, float delay) {
+public void HumanDogUse(const char[] output, int caller, int activator, float delay)
+{
 	float fOrigin[3];
 	float fAngles[3];
 	GetClientEyeAngles(activator, fAngles);

@@ -25,14 +25,16 @@ ConVar g_hCVar_SpawnMode;
 #include "itemspawn/vortigaunt.inc"
 #include "itemspawn/whiteknight.inc"
 
-public Plugin myinfo = {
+public Plugin myinfo =
+{
 	name        = "ItemSpawn",
-	author      = "Neon, koen",
+	author      = "Original by Neon, Updated by koen",
 	description = "",
 	version     = "1.2.0",
 }
 
-public void OnPluginStart() {
+public void OnPluginStart()
+{
 	HookEvent("round_start", OnRoundStart, EventHookMode_Post);
 
 	RegAdminCmd("sm_balrog", Command_Balrog, ADMFLAG_ROOT);
@@ -46,21 +48,24 @@ public void OnPluginStart() {
 	LoadTranslations("common.phrases");
 
 	GameData hGameConf;
-	if ((hGameConf = new GameData("ItemSpawn.games")) == null) {
+	if ((hGameConf = new GameData("ItemSpawn.games")) == null)
+	{
 		SetFailState("Failed to load \"ItemSpawn.games\" game config!");
 		return;
 	}
 
 	// "CBaseCombatWeapon::GetSlot"
 	StartPrepSDKCall(SDKCall_Entity);
-	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBaseCombatWeapon::GetSlot")) {
+	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBaseCombatWeapon::GetSlot"))
+	{
 		delete hGameConf;
 		SetFailState("Failed to setup SDKCall \"SDKCall_GetSlot\"!");
 		return;
 	}
 
 	PrepSDKCall_SetReturnInfo(SDKType_PlainOldData, SDKPass_Plain);
-	if ((SDKCall_GetSlot = EndPrepSDKCall()) == null) {
+	if ((SDKCall_GetSlot = EndPrepSDKCall()) == null)
+	{
 		delete hGameConf;
 		SetFailState("Failed to end SDKCall \"SDKCall_GetSlot\"!");
 		return;
@@ -68,14 +73,16 @@ public void OnPluginStart() {
 
 	// "CBaseCombatWeapon::OnPickedUp"
 	StartPrepSDKCall(SDKCall_Entity);
-	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBaseCombatWeapon::OnPickedUp")) {
+	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBaseCombatWeapon::OnPickedUp"))
+	{
 		delete hGameConf;
 		SetFailState("Failed to setup SDKCall \"SDKCall_OnPickedUp\"!");
 		return;
 	}
 
 	PrepSDKCall_AddParameter(SDKType_CBaseEntity, SDKPass_Pointer);
-	if ((SDKCall_OnPickedUp = EndPrepSDKCall()) == null) {
+	if ((SDKCall_OnPickedUp = EndPrepSDKCall()) == null)
+	{
 		delete hGameConf;
 		SetFailState("Failed to end SDKCall \"SDKCall_OnPickedUp\"!");
 		return;
@@ -83,7 +90,8 @@ public void OnPluginStart() {
 
 	// "CBasePlayer::BumpWeapon"
 	StartPrepSDKCall(SDKCall_Player);
-	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBasePlayer::BumpWeapon")) {
+	if (!PrepSDKCall_SetFromConf(hGameConf, SDKConf_Virtual, "CBasePlayer::BumpWeapon"))
+	{
 		delete hGameConf;
 		SetFailState("Failed to setup SDKCall \"SDKCall_BumpWeapon\"!");
 		return;
@@ -91,7 +99,8 @@ public void OnPluginStart() {
 
 	PrepSDKCall_SetReturnInfo(SDKType_Bool, SDKPass_Plain);
 	PrepSDKCall_AddParameter(SDKType_CBaseEntity, SDKPass_Pointer);
-	if ((SDKCall_BumpWeapon = EndPrepSDKCall()) == null) {
+	if ((SDKCall_BumpWeapon = EndPrepSDKCall()) == null)
+	{
 		delete hGameConf;
 		SetFailState("Failed to end SDKCall \"SDKCall_BumpWeapon\"!");
 		return;
@@ -103,7 +112,8 @@ public void OnPluginStart() {
 	AutoExecConfig();
 }
 
-public void OnMapStart() {
+public void OnMapStart()
+{
 	// Physbox model
 	PrecacheModel("models/props/cs_militia/crate_extrasmallmill.mdl");
 
@@ -201,56 +211,67 @@ public void OnMapStart() {
 	AddFileToDownloadsTable("materials/models/dog_gondor/weapon107_000_002.vtf");
 }
 
-stock int CreateEntityAtOrigin(const char[] classname, const float origin[3]) {
+stock int CreateEntityAtOrigin(const char[] classname, const float origin[3])
+{
 	int entity = CreateEntityByName(classname);
 	TeleportEntity(entity, origin, NULL_VECTOR, NULL_VECTOR);
 	return entity;
 }
 
-stock bool DispatchKeyFormat(int entity, const char[] key, const char[] value, any ...) {
+stock bool DispatchKeyFormat(int entity, const char[] key, const char[] value, any ...)
+{
 	char buffer[1024];
 	VFormat(buffer, sizeof(buffer), value, 4);
 	DispatchKeyValue(entity, key, buffer);
 	return true;
 }
 
-stock void SpawnAndActivate(int entity) {
+stock void SpawnAndActivate(int entity)
+{
 	DispatchSpawn(entity);
 	ActivateEntity(entity);
 }
 
-stock void ParentToEntity(int entity, int parent) {
+stock void ParentToEntity(int entity, int parent)
+{
 	SetVariantString("!activator");
 	AcceptEntityInput(entity, "SetParent", parent, parent);
 }
 
-stock void SetEntityBBox(int entity, const float mins[3], const float maxs[3]) {
+stock void SetEntityBBox(int entity, const float mins[3], const float maxs[3])
+{
 	SetEntPropVector(entity, Prop_Send, "m_vecMins", mins);
 	SetEntPropVector(entity, Prop_Send, "m_vecMaxs", maxs);
 }
 
-stock void SetEntityProps(int entity) {
+stock void SetEntityProps(int entity)
+{
 	SetEntProp(entity, Prop_Send, "m_nSolidType", 3);
 	SetEntProp(entity, Prop_Send, "m_fEffects", 32);
 }
 
-stock void AddItemFilter(int entity) {
+stock void AddItemFilter(int entity)
+{
 	SDKHook(entity, SDKHook_StartTouch, OnTriggerTouch);
 	SDKHook(entity, SDKHook_EndTouch, OnTriggerTouch);
 	SDKHook(entity, SDKHook_Touch, OnTriggerTouch);
 }
 
-stock bool IsValidClient(int client) {
+stock bool IsValidClient(int client)
+{
 	return ((1 <= client <= MaxClients) && IsClientConnected(client) && IsClientInGame(client) && !IsFakeClient(client));
 }
 
-public Action OnTriggerTouch(int trigger, int client) {
+public Action OnTriggerTouch(int trigger, int client)
+{
 	return (IsValidClient(client) && g_bClientHasItem[client]) ? Plugin_Handled : Plugin_Continue;
 }
 
-public Action EquipWeapons(Handle timer, any userid) {
+public Action EquipWeapons(Handle timer, any userid)
+{
 	int client = GetClientOfUserId(userid);
-	if (client != 0) {
+	if (client != 0)
+	{
 		GivePlayerItem(client, "weapon_p90");
 		GivePlayerItem(client, "weapon_elite");
 		GivePlayerItem(client, "item_kevlar");
@@ -259,15 +280,15 @@ public Action EquipWeapons(Handle timer, any userid) {
 	return Plugin_Stop;
 }
 
-public void OnClientDisconnect(int client) {
+public void OnClientDisconnect(int client)
+{
 	g_bClientHasItem[client] = false;
 }
 
 public void OnRoundStart(Event hEvent, const char[] sEvent, bool bDontBroadcast)
 {
-	for (int client = 1; client <= MaxClients; client++) {
+	for (int client = 1; client <= MaxClients; client++)
 		g_bClientHasItem[client] = false;
-	}
 
 	g_iCounter = 0;
 

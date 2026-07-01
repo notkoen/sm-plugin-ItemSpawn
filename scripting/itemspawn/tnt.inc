@@ -76,7 +76,8 @@ public Action Command_TNT(int client, int argc)
 	return Plugin_Handled;
 }
 
-public void SpawnTNT(float fOrigin[3]) {
+public void SpawnTNT(float fOrigin[3])
+{
 	char sBuffer[256];
 	float fOriginTemp[3];
 
@@ -313,15 +314,17 @@ public void SpawnTNT(float fOrigin[3]) {
 	g_iCounter ++;
 }
 
-public void TNTPickup(const char[] output, int caller, int activator, float delay) {
+public void TNTPickup(const char[] output, int caller, int activator, float delay)
+{
 	char sBuffer[128];
 	Format(sBuffer, sizeof(sBuffer), "say ** %N has picked up TNT **", activator);
 	SetVariantString(sBuffer);
-	//AcceptEntityInput(g_iConsole, "Command");
+	// AcceptEntityInput(g_iConsole, "Command");
 	PrintToChat(activator, " RIGHT CLICK = Launch TNT and LEFT CLICK = Switch between 'put down' and 'throw'.");
 }
 
-public void TNTUse(const char[] output, int caller, int activator, float delay) {
+public void TNTUse(const char[] output, int caller, int activator, float delay)
+{
 	char sBuffer[256];
 	float fOrigin[3];
 	float fAngles[3];

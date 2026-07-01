@@ -1,4 +1,5 @@
-public Action Command_Balrog(int client, int argc) {
+public Action Command_Balrog(int client, int argc)
+{
 	switch (g_hCVar_SpawnMode.IntValue)
 	{
 		case 0:
@@ -75,7 +76,8 @@ public Action Command_Balrog(int client, int argc) {
 	return Plugin_Handled;
 }
 
-public void SpawnBalrog(float fOrigin[3]) {
+public void SpawnBalrog(float fOrigin[3])
+{
 	float fOriginTemp[3];
 
 	// weapon_knife.
@@ -294,7 +296,7 @@ public void SpawnBalrog(float fOrigin[3]) {
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "item_balrog_controls_%d,Kill,,0,1", g_iCounter);
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,AddOutput,rendermode 0,0,1");
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,AddOutput,renderfx 0,0,1");
-//  DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,AddOutput,gravity 1,0,1");
+	// DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,AddOutput,gravity 1,0,1");
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,SetDamageFilter,,0,1");
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "!activator,SetHealth,0,0.02,-1");
 	DispatchKeyFormat(iRelayDeath, "OnUser1",           "!self,Kill,,0,1");
@@ -352,7 +354,7 @@ public void SpawnBalrog(float fOrigin[3]) {
 	DispatchKeyFormat(iHealth, "OnUser1",               "!activator,SetDamageFilter,item_filter_human_ignored,0,-1");
 	DispatchKeyFormat(iHealth, "OnUser1",               "!activator,AddOutput,rendermode 10,0,-1");
 	DispatchKeyFormat(iHealth, "OnUser1",               "!activator,AddOutput,renderfx 6,0,-1");
-//  DispatchKeyFormat(iHealth, "OnUser1",               "!activator,AddOutput,gravity 2,0,-1");
+	// DispatchKeyFormat(iHealth, "OnUser1",               "!activator,AddOutput,gravity 2,0,-1");
 	DispatchKeyFormat(iHealth, "OnUser1",               "!self,FireUser1,,1,-1");
 	DispatchKeyFormat(iHealth, "OnUser2",               "item_balrog_walk_sound_%d,PlaySound,,0,-1", g_iCounter);
 	DispatchKeyFormat(iHealth, "OnUser2",               "item_balrog_walk_%d,Disable,,0,-1", g_iCounter);
@@ -384,19 +386,18 @@ public void SpawnBalrog(float fOrigin[3]) {
 	g_iCounter++;
 }
 
-public void BalrogPickup(const char[] output, int caller, int activator, float delay) {
-	if (IsValidClient(activator)) {
+public void BalrogPickup(const char[] output, int caller, int activator, float delay)
+{
+	if (IsValidClient(activator))
+	{
 		ServerCommand("say ** %N has picked up Balrog **", activator);
 		PrintToChat(activator, "RIGHT CLICK = MOTIVATE ZOMBIES and LEFT CLICK = ATTACK.");
 		g_bClientHasItem[activator] = true;
 	}
 }
 
-//----------------------------------------------------------------------------------------------------
-// Purpose:
-//----------------------------------------------------------------------------------------------------
-public void BalrogKill(const char[] output, int caller, int activator, float delay) {
-	if (IsValidClient(activator)) {
+public void BalrogKill(const char[] output, int caller, int activator, float delay)
+{
+	if (IsValidClient(activator))
 		ServerCommand("say ** %N has killed the Balrog **", activator);
-	}
 }
