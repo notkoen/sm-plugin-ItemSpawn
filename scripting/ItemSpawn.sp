@@ -216,8 +216,8 @@ stock int CreateEntityAtOrigin(const char[] classname, const float origin[3])
 	int entity = CreateEntityByName(classname);
 	if (entity == -1)
 	{
-		ThrowError("[ItemSpawn] Error! \"CreateEntityAtOrigin\" attempted to create an invalid entity!")
-		return;
+		ThrowError("[ItemSpawn] Error! \"CreateEntityAtOrigin\" attempted to create an invalid entity!");
+		return -1;
 	}
 	TeleportEntity(entity, origin, NULL_VECTOR, NULL_VECTOR);
 	return entity;
