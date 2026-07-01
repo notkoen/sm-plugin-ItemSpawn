@@ -160,13 +160,18 @@ void SpawnEarthStaff(float fOrigin[3], int client = -1)
 
 public void EarthStaffPickup(const char[] output, int caller, int activator, float delay)
 {
-	ServerCommand("say ** %N has picked up the Earth-Staff **", activator);
-	PrintToChat(activator, "Right Click with Knife = Use.");
+	if (IsValidClient(activator))
+	{
+		ServerCommand("say ** %N has picked up the Earth-Staff **", activator);
+		PrintToChat(activator, "Right Click with Knife = Use.");
+		g_bClientHasItem[activator] = true;
+	}
 }
 
 public void EarthStaffUse(const char[] output, int caller, int activator, float delay)
 {
-	CreateTimer(0.75, SpawnEarth, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
+	if (IsValidClient(activator))
+		CreateTimer(0.75, SpawnEarth, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
 }
 
 public Action SpawnEarth(Handle timer, any userid)

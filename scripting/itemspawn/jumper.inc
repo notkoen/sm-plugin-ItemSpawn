@@ -158,10 +158,14 @@ public void SpawnJumper(float fOrigin[3])
 
 public void JumperPickup(const char[] output, int caller, int activator, float delay)
 {
-	ServerCommand("say ** %N has picked up Jumper **", activator);
-	PrintToChat(activator, "RIGHT CLICK = Jump Boost");
-	if (ZR_IsClientHuman(activator))
-		CreateTimer(2.0, EquipWeapons, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
+	if (IsValidClient(activator))
+	{
+		ServerCommand("say ** %N has picked up Jumper **", activator);
+		PrintToChat(activator, "RIGHT CLICK = Jump Boost");
+		g_bClientHasItem[activator] = true;
+		if (ZR_IsClientHuman(activator))
+			CreateTimer(1.0, EquipWeapons, GetClientUserId(activator), TIMER_FLAG_NO_MAPCHANGE);
+	}
 }
 
 public void JumperUse(const char[] output, int caller, int activator, float delay)

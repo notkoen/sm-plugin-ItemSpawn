@@ -316,8 +316,12 @@ public void SpawnTNT(float fOrigin[3])
 
 public void TNTPickup(const char[] output, int caller, int activator, float delay)
 {
-	ServerCommand("say ** %N has picked up TNT", activator);
-	PrintToChat(activator, " RIGHT CLICK = Launch TNT and LEFT CLICK = Switch between 'put down' and 'throw'.");
+	if (IsValidClient(activator))
+	{
+		ServerCommand("say ** %N has picked up TNT", activator);
+		PrintToChat(activator, " RIGHT CLICK = Launch TNT and LEFT CLICK = Switch between 'put down' and 'throw'.");
+		g_bClientHasItem[activator] = true;
+	}
 }
 
 public void TNTUse(const char[] output, int caller, int activator, float delay)
