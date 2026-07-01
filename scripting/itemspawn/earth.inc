@@ -35,7 +35,7 @@ public Action Command_Earth(int client, int argc)
 			{
 				if (!client)
 				{
-					ReplyToCommand(client, "ItemSpawn] Cannot spawn items on yourself as server console.");
+					ReplyToCommand(client, "[ItemSpawn] Cannot spawn items on yourself as server console.");
 					return Plugin_Handled;
 				}
 				else
