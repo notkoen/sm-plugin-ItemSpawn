@@ -15,6 +15,8 @@ Handle SDKCall_GetSlot;
 Handle SDKCall_BumpWeapon;
 Handle SDKCall_OnPickedUp;
 
+ConVar g_hCVar_SpawnMode;
+
 #include "itemspawn/balrog.inc"
 #include "itemspawn/doghuman.inc"
 #include "itemspawn/earth.inc"
@@ -96,6 +98,9 @@ public void OnPluginStart() {
 	}
 
 	delete hGameConf;
+
+	g_hCVar_SpawnMode = CreateConVar("sm_itemspawn_mode", "1", "ItemSpawn mode (0 = Disabled, 1 = Self Only, 2 = Self and Target)", FCVAR_NONE, true, 0.0, true, 2.0);
+	AutoExecConfig();
 }
 
 public void OnMapStart() {

@@ -1,31 +1,75 @@
 public Action Command_HumanDog(int client, int argc) {
-	float fOrigin[3];
+	switch (g_hCVar_SpawnMode.IntValue)
+	{
+		case 0:
+		{
+			ReplyToCommand(client, "[ItemSpawn] This feature is currently disabled.");
+			return Plugin_Handled;
+		}
+		case 1:
+		{
+			if (!client)
+			{
+				ReplyToCommand(client, "[ItemSpawn] Cannot spawn items on yourself as server console.");
+				return Plugin_Handled;
+			}
+			else if (argc > 0)
+			{
+				ReplyToCommand(client, "[ItemSpawn] You can only spawn items on yourself.");
+				return Plugin_Handled;
+			}
+			else
+			{
+				float fOrigin[3];
+				GetClientEyePosition(client, fOrigin);
+				SpawnHumanDog(fOrigin);
+				LogAction(client, -1, "\"%L\" spawned Human Dog at <%f><%f><%f>.", client, fOrigin[0], fOrigin[1], fOrigin[2]);
+			}
+		}
+		case 2:
+		{
+			float fOrigin[3];
 
-	if (argc < 1) {
-		GetClientEyePosition(client, fOrigin);
-		SpawnHumanDog(fOrigin);
-		LogAction(client, -1, "\"%L\" spawned Human Dog at <%f><%f><%f>.", client, fOrigin[0], fOrigin[1], fOrigin[2]);
-		return Plugin_Handled;
-	}
+			if (argc < 1)
+			{
+				if (!client)
+				{
+					ReplyToCommand(client, "[ItemSpawn] Cannot spawn items on yourself as server console.");
+					return Plugin_Handled;
+				}
+				else
+				{
+					GetClientEyePosition(client, fOrigin);
+					SpawnHumanDog(fOrigin);
+					LogAction(client, -1, "\"%L\" spawned Human Dog at <%f><%f><%f>.", client, fOrigin[0], fOrigin[1], fOrigin[2]);
+				}
+			}
+			else
+			{
+				char sArgs[64];
+				char sTargetName[MAX_TARGET_LENGTH];
+				int iTargets[MAXPLAYERS];
+				int iTargetCount;
+				bool bIsML;
 
-	char sArgs[64];
-	char sTargetName[MAX_TARGET_LENGTH];
-	int iTargets[MAXPLAYERS];
-	int iTargetCount;
-	bool bIsML;
+				GetCmdArg(1, sArgs, sizeof(sArgs));
 
-	GetCmdArg(1, sArgs, sizeof(sArgs));
+				if ((iTargetCount = ProcessTargetString(sArgs, client, iTargets, MAXPLAYERS, COMMAND_FILTER_CONNECTED, sTargetName, sizeof(sTargetName), bIsML)) <= 0)
+				{
+					ReplyToTargetError(client, iTargetCount);
+					return Plugin_Handled;
+				}
 
-	if ((iTargetCount = ProcessTargetString(sArgs, client, iTargets, MAXPLAYERS, COMMAND_FILTER_CONNECTED, sTargetName, sizeof(sTargetName), bIsML)) <= 0) {
-		ReplyToTargetError(client, iTargetCount);
-		return Plugin_Handled;
-	}
-
-	for (int i = 0; i < iTargetCount; i++) {
-		if (IsClientInGame(iTargets[i]) && IsPlayerAlive(iTargets[i]) && (ZR_IsClientHuman(iTargets[i]))) {
-			GetClientEyePosition(iTargets[i], fOrigin);
-			SpawnHumanDog(fOrigin);
-			LogAction(client, -1, "\"%L\" gave Human Dog to \"%L\".", client, iTargets[i]);
+				for (int i = 0; i < iTargetCount; i++)
+				{
+					if (IsClientInGame(iTargets[i]) && IsPlayerAlive(iTargets[i]) && (ZR_IsClientHuman(iTargets[i])))
+					{
+						GetClientEyePosition(iTargets[i], fOrigin);
+						SpawnHumanDog(fOrigin);
+						LogAction(client, -1, "\"%L\" gave Human Dog to \"%L\".", client, iTargets[i]);
+					}
+				}
+			}
 		}
 	}
 	return Plugin_Handled;
