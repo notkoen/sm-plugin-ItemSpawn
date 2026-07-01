@@ -316,10 +316,7 @@ public void SpawnTNT(float fOrigin[3])
 
 public void TNTPickup(const char[] output, int caller, int activator, float delay)
 {
-	char sBuffer[128];
-	Format(sBuffer, sizeof(sBuffer), "say ** %N has picked up TNT **", activator);
-	SetVariantString(sBuffer);
-	// AcceptEntityInput(g_iConsole, "Command");
+	ServerCommand("say ** %N has picked up TNT", activator);
 	PrintToChat(activator, " RIGHT CLICK = Launch TNT and LEFT CLICK = Switch between 'put down' and 'throw'.");
 }
 

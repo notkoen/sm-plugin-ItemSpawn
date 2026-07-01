@@ -82,12 +82,12 @@ void SpawnEarthStaff(float fOrigin[3], int client = -1)
 
 	// weapon_knife.
 	int iPistol = CreateEntityAtOrigin("weapon_elite", fOrigin);
-	DispatchKeyFormat(iPistol, "targetname",                "item_earth_staff_pistol_%d", g_iCounter);
-	DispatchKeyFormat(iPistol, "hammerid",                  "11051995%d", g_iCounter);
-	DispatchKeyFormat(iPistol, "spawnflags",                "1");
-	DispatchKeyFormat(iPistol, "angles",                    "0 0 0");
-	DispatchKeyFormat(iPistol, "ammo",                      "999");
-	DispatchKeyFormat(iPistol, "OnPlayerPickup",            "item_earth_staff_controls_%d,Activate,,0,1", g_iCounter);
+	DispatchKeyFormat(iPistol, "targetname", "item_earth_staff_pistol_%d", g_iCounter);
+	DispatchKeyFormat(iPistol, "hammerid", "11051995%d", g_iCounter);
+	DispatchKeyFormat(iPistol, "spawnflags", "1");
+	DispatchKeyFormat(iPistol, "angles", "0 0 0");
+	DispatchKeyFormat(iPistol, "ammo", "999");
+	DispatchKeyFormat(iPistol, "OnPlayerPickup", "item_earth_staff_controls_%d,Activate,,0,1", g_iCounter);
 	SpawnAndActivate(iPistol);
 
 	HookSingleEntityOutput(iPistol, "OnPlayerPickup", EarthStaffPickup, false);
@@ -99,37 +99,37 @@ void SpawnEarthStaff(float fOrigin[3], int client = -1)
 
 	// prop_dynamic model.
 	int iModel = CreateEntityAtOrigin("prop_dynamic", fOriginTemp);
-	DispatchKeyFormat(iModel, "targetname",                 "item_earth_staff_model_%d", g_iCounter);
-	DispatchKeyFormat(iModel, "model",                      "models/staff/staff.mdl");
-	DispatchKeyFormat(iModel, "disablebonefollowers",       "1");
-	DispatchKeyFormat(iModel, "defaultanim",                "idle");
-	DispatchKeyFormat(iModel, "angles",                     "0 270 0");
-	DispatchKeyFormat(iModel, "solid",                      "0");
+	DispatchKeyFormat(iModel, "targetname", "item_earth_staff_model_%d", g_iCounter);
+	DispatchKeyFormat(iModel, "model", "models/staff/staff.mdl");
+	DispatchKeyFormat(iModel, "disablebonefollowers", "1");
+	DispatchKeyFormat(iModel, "defaultanim", "idle");
+	DispatchKeyFormat(iModel, "angles", "0 270 0");
+	DispatchKeyFormat(iModel, "solid", "0");
 	SpawnAndActivate(iModel);
 	ParentToEntity(iModel, iPistol);
 
 	// ambient_generic earth.
 	int iSoundEarth = CreateEntityAtOrigin("ambient_generic", fOrigin);
-	DispatchKeyFormat(iSoundEarth, "targetname",            "item_earth_staff_sound_%d", g_iCounter);
-	DispatchKeyFormat(iSoundEarth, "spawnflags",            "48");
-	DispatchKeyFormat(iSoundEarth, "radius",                "1250");
-	DispatchKeyFormat(iSoundEarth, "sourceentityname",      "item_earth_staff_model_%d", g_iCounter);
-	DispatchKeyFormat(iSoundEarth, "message",               "physics/concrete/boulder_impact_hard1.wav");
-	DispatchKeyFormat(iSoundEarth, "volume",                "10");
-	DispatchKeyFormat(iSoundEarth, "health",                "10");
-	DispatchKeyFormat(iSoundEarth, "pitch",                 "100");
-	DispatchKeyFormat(iSoundEarth, "pitchstart",            "100");
+	DispatchKeyFormat(iSoundEarth, "targetname", "item_earth_staff_sound_%d", g_iCounter);
+	DispatchKeyFormat(iSoundEarth, "spawnflags", "48");
+	DispatchKeyFormat(iSoundEarth, "radius", "1250");
+	DispatchKeyFormat(iSoundEarth, "sourceentityname", "item_earth_staff_model_%d", g_iCounter);
+	DispatchKeyFormat(iSoundEarth, "message", "physics/concrete/boulder_impact_hard1.wav");
+	DispatchKeyFormat(iSoundEarth, "volume", "10");
+	DispatchKeyFormat(iSoundEarth, "health", "10");
+	DispatchKeyFormat(iSoundEarth, "pitch", "100");
+	DispatchKeyFormat(iSoundEarth, "pitchstart", "100");
 	SpawnAndActivate(iSoundEarth);
 	ParentToEntity(iSoundEarth, iPistol);
 
 	// logic_relay earth.
 	int iRelayEarth = CreateEntityAtOrigin("logic_relay", fOrigin);
-	DispatchKeyFormat(iRelayEarth, "targetname",        "item_earth_staff_relay_%d", g_iCounter);
-	DispatchKeyFormat(iRelayEarth, "spawnflags",        "0");
-	DispatchKeyFormat(iRelayEarth, "OnTrigger",         "!self,Disable,,0,-1");
-	DispatchKeyFormat(iRelayEarth, "OnTrigger",         "!self,Enable,,5,-1");
-	DispatchKeyFormat(iRelayEarth, "OnTrigger",         "item_earth_staff_sound_%d,PlaySound,,0.75,-1", g_iCounter);
-	DispatchKeyFormat(iRelayEarth, "OnTrigger",         "item_earth_staff_model_%d,SetAnimation,Earth,0,-1", g_iCounter);
+	DispatchKeyFormat(iRelayEarth, "targetname", "item_earth_staff_relay_%d", g_iCounter);
+	DispatchKeyFormat(iRelayEarth, "spawnflags", "0");
+	DispatchKeyFormat(iRelayEarth, "OnTrigger", "!self,Disable,,0,-1");
+	DispatchKeyFormat(iRelayEarth, "OnTrigger", "!self,Enable,,5,-1");
+	DispatchKeyFormat(iRelayEarth, "OnTrigger", "item_earth_staff_sound_%d,PlaySound,,0.75,-1", g_iCounter);
+	DispatchKeyFormat(iRelayEarth, "OnTrigger", "item_earth_staff_model_%d,SetAnimation,Earth,0,-1", g_iCounter);
 	SpawnAndActivate(iRelayEarth);
 	ParentToEntity(iRelayEarth, iPistol);
 
@@ -137,10 +137,10 @@ void SpawnEarthStaff(float fOrigin[3], int client = -1)
 
 	// game_ui.
 	int iControls = CreateEntityAtOrigin("game_ui", fOrigin);
-	DispatchKeyFormat(iControls, "targetname",          "item_earth_staff_controls_%d", g_iCounter);
-	DispatchKeyFormat(iControls, "spawnflags",          "0");
-	DispatchKeyFormat(iControls, "fieldofview",         "-1.0");
-	DispatchKeyFormat(iControls, "PressedAttack2",      "item_earth_staff_relay_%d,Trigger,,0,-1", g_iCounter);
+	DispatchKeyFormat(iControls, "targetname", "item_earth_staff_controls_%d", g_iCounter);
+	DispatchKeyFormat(iControls, "spawnflags", "0");
+	DispatchKeyFormat(iControls, "fieldofview", "-1.0");
+	DispatchKeyFormat(iControls, "PressedAttack2", "item_earth_staff_relay_%d,Trigger,,0,-1", g_iCounter);
 	SpawnAndActivate(iControls);
 	ParentToEntity(iControls, iPistol);
 
@@ -185,13 +185,13 @@ public Action SpawnEarth(Handle timer, any userid)
 
 	// prop_dynamic model.
 	int iModel = CreateEntityAtOrigin("prop_dynamic", fOrigin);
-	DispatchKeyFormat(iModel, "targetname",             "item_earth_prop_%d", g_iCounter);
-	DispatchKeyFormat(iModel, "model",                  "models/ffxii/earthmodel1.mdl");
-	DispatchKeyFormat(iModel, "spawnflags",             "0");
-	DispatchKeyFormat(iModel, "PerformanceMode",        "0");
-	DispatchKeyFormat(iModel, "solid",                  "6");
-	DispatchKeyFormat(iModel, "OnUser1",                "!self,Break,,6,-1");
-	DispatchKeyFormat(iModel, "OnUser1",                "!self,Kill,,6,-1");
+	DispatchKeyFormat(iModel, "targetname", "item_earth_prop_%d", g_iCounter);
+	DispatchKeyFormat(iModel, "model", "models/ffxii/earthmodel1.mdl");
+	DispatchKeyFormat(iModel, "spawnflags", "0");
+	DispatchKeyFormat(iModel, "PerformanceMode", "0");
+	DispatchKeyFormat(iModel, "solid", "6");
+	DispatchKeyFormat(iModel, "OnUser1", "!self,Break,,6,-1");
+	DispatchKeyFormat(iModel, "OnUser1", "!self,Kill,,6,-1");
 	SpawnAndActivate(iModel);
 	AcceptEntityInput(iModel, "FireUser1");
 

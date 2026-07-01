@@ -82,11 +82,11 @@ public void SpawnJumper(float fOrigin[3])
 
 	// weapon_knife.
 	int iKnife = CreateEntityAtOrigin("weapon_knife", fOrigin);
-	DispatchKeyFormat(iKnife, "targetname",             "item_jumper_knife_%d", g_iCounter);
-	DispatchKeyFormat(iKnife, "hammerid",               "11051995%d", g_iCounter);
-	DispatchKeyFormat(iKnife, "spawnflags",             "1");
-	DispatchKeyFormat(iKnife, "angles",                 "0 0 0");
-	DispatchKeyFormat(iKnife, "OnPlayerPickup",         "item_jumper_controls_%d,Activate,,0,1", g_iCounter);
+	DispatchKeyFormat(iKnife, "targetname", "item_jumper_knife_%d", g_iCounter);
+	DispatchKeyFormat(iKnife, "hammerid", "11051995%d", g_iCounter);
+	DispatchKeyFormat(iKnife, "spawnflags", "1");
+	DispatchKeyFormat(iKnife, "angles", "0 0 0");
+	DispatchKeyFormat(iKnife, "OnPlayerPickup", "item_jumper_controls_%d,Activate,,0,1", g_iCounter);
 
 	SpawnAndActivate(iKnife);
 
@@ -99,32 +99,32 @@ public void SpawnJumper(float fOrigin[3])
 
 	// light.
 	int iLight = CreateEntityAtOrigin("light_dynamic", fOriginTemp);
-	DispatchKeyFormat(iLight, "targetname",                 "item_jumper_light_%d", g_iCounter);
-	DispatchKeyFormat(iLight, "style",                      "0");
-	DispatchKeyFormat(iLight, "spotlight_radius",           "180");
-	DispatchKeyFormat(iLight, "spawnflags",                 "1");
-	DispatchKeyFormat(iLight, "pitch",                      "-90");
-	DispatchKeyFormat(iLight, "distance",                   "130");
-	DispatchKeyFormat(iLight, "brightness",                 "10");
-	DispatchKeyFormat(iLight, "angles",                     "0 0 0");
-	DispatchKeyFormat(iLight, "_zero_percent_distance",     "50");
-	DispatchKeyFormat(iLight, "_quadratic_attn",            "115");
-	DispatchKeyFormat(iLight, "_linear_attn",               "70");
-	DispatchKeyFormat(iLight, "_lightHDR",                  "-1 -1 -1 1");
-	DispatchKeyFormat(iLight, "_light",                     "255 128 0 1");
-	DispatchKeyFormat(iLight, "_inner_cone",                "0");
-	DispatchKeyFormat(iLight, "_fifty_percent_distance",    "42");
-	DispatchKeyFormat(iLight, "_constant_attn",             "50");
-	DispatchKeyFormat(iLight, "_cone",                      "0");
+	DispatchKeyFormat(iLight, "targetname", "item_jumper_light_%d", g_iCounter);
+	DispatchKeyFormat(iLight, "style", "0");
+	DispatchKeyFormat(iLight, "spotlight_radius", "180");
+	DispatchKeyFormat(iLight, "spawnflags", "1");
+	DispatchKeyFormat(iLight, "pitch", "-90");
+	DispatchKeyFormat(iLight, "distance", "130");
+	DispatchKeyFormat(iLight, "brightness", "10");
+	DispatchKeyFormat(iLight, "angles", "0 0 0");
+	DispatchKeyFormat(iLight, "_zero_percent_distance", "50");
+	DispatchKeyFormat(iLight, "_quadratic_attn", "115");
+	DispatchKeyFormat(iLight, "_linear_attn", "70");
+	DispatchKeyFormat(iLight, "_lightHDR", "-1 -1 -1 1");
+	DispatchKeyFormat(iLight, "_light", "255 128 0 1");
+	DispatchKeyFormat(iLight, "_inner_cone", "0");
+	DispatchKeyFormat(iLight, "_fifty_percent_distance", "42");
+	DispatchKeyFormat(iLight, "_constant_attn", "50");
+	DispatchKeyFormat(iLight, "_cone", "0");
 	SpawnAndActivate(iLight);
 	ParentToEntity(iLight, iKnife);
 
 	// trigger_once strip.
 	int iTriggerStrip = CreateEntityAtOrigin("trigger_once", fOrigin);
-	DispatchKeyFormat(iTriggerStrip, "targetname",      "item_jumper_strip_%d", g_iCounter);
-	DispatchKeyFormat(iTriggerStrip, "spawnflags",      "1");
-	DispatchKeyFormat(iTriggerStrip, "startdisabled",   "1");
-	DispatchKeyFormat(iTriggerStrip, "OnStartTouch",    "item_spawn_weaponstrip,StripWeaponsAndSuit,,0,1");
+	DispatchKeyFormat(iTriggerStrip, "targetname", "item_jumper_strip_%d", g_iCounter);
+	DispatchKeyFormat(iTriggerStrip, "spawnflags", "1");
+	DispatchKeyFormat(iTriggerStrip, "startdisabled", "1");
+	DispatchKeyFormat(iTriggerStrip, "OnStartTouch", "item_spawn_weaponstrip,StripWeaponsAndSuit,,0,1");
 	SpawnAndActivate(iTriggerStrip);
 	ParentToEntity(iTriggerStrip, iKnife);
 
@@ -134,10 +134,10 @@ public void SpawnJumper(float fOrigin[3])
 
 	// logic_relay jump.
 	int iRelayJump = CreateEntityAtOrigin("logic_relay", fOrigin);
-	DispatchKeyFormat(iRelayJump, "targetname",        "item_jumper_relay_%d", g_iCounter);
-	DispatchKeyFormat(iRelayJump, "spawnflags",        "0");
-	DispatchKeyFormat(iRelayJump, "OnTrigger",         "!self,Disable,,0,-1");
-	DispatchKeyFormat(iRelayJump, "OnTrigger",         "!self,Enable,,5,-1");
+	DispatchKeyFormat(iRelayJump, "targetname", "item_jumper_relay_%d", g_iCounter);
+	DispatchKeyFormat(iRelayJump, "spawnflags", "0");
+	DispatchKeyFormat(iRelayJump, "OnTrigger", "!self,Disable,,0,-1");
+	DispatchKeyFormat(iRelayJump, "OnTrigger", "!self,Enable,,5,-1");
 	SpawnAndActivate(iRelayJump);
 	ParentToEntity(iRelayJump, iKnife);
 
@@ -145,10 +145,10 @@ public void SpawnJumper(float fOrigin[3])
 
 	// game_ui.
 	int iControls = CreateEntityAtOrigin("game_ui", fOrigin);
-	DispatchKeyFormat(iControls, "targetname",          "item_jumper_controls_%d", g_iCounter);
-	DispatchKeyFormat(iControls, "spawnflags",          "0");
-	DispatchKeyFormat(iControls, "fieldofview",         "-1.0");
-	DispatchKeyFormat(iControls, "PressedAttack2",      "item_jumper_relay_%d,Trigger,,0,-1", g_iCounter);
+	DispatchKeyFormat(iControls, "targetname", "item_jumper_controls_%d", g_iCounter);
+	DispatchKeyFormat(iControls, "spawnflags", "0");
+	DispatchKeyFormat(iControls, "fieldofview", "-1.0");
+	DispatchKeyFormat(iControls, "PressedAttack2", "item_jumper_relay_%d,Trigger,,0,-1", g_iCounter);
 	SpawnAndActivate(iControls);
 	ParentToEntity(iControls, iKnife);
 

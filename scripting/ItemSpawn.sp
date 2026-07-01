@@ -294,78 +294,78 @@ public void OnRoundStart(Event hEvent, const char[] sEvent, bool bDontBroadcast)
 
 	// player_weaponstrip.
 	int iPlayerStrip = CreateEntityByName("player_weaponstrip");
-	DispatchKeyFormat(iPlayerStrip, "targetname",       "item_spawn_weaponstrip");
+	DispatchKeyFormat(iPlayerStrip, "targetname", "item_spawn_weaponstrip");
 	SpawnAndActivate(iPlayerStrip);
 
 	// player_speedmod.
 	int iPlayerSpeed = CreateEntityByName("player_speedmod");
-	DispatchKeyFormat(iPlayerSpeed, "targetname",       "item_spawn_speedmod");
+	DispatchKeyFormat(iPlayerSpeed, "targetname", "item_spawn_speedmod");
 	SpawnAndActivate(iPlayerSpeed);
 
 	// filter_activator_class nodamage.
 	int iNoDamageFilter = CreateEntityByName("filter_activator_class");
-	DispatchKeyFormat(iNoDamageFilter, "targetname",    "item_filter_nodamage");
-	DispatchKeyFormat(iNoDamageFilter, "Negated",       "0");
-	DispatchKeyFormat(iNoDamageFilter, "filterclass",   "light");
+	DispatchKeyFormat(iNoDamageFilter, "targetname", "item_filter_nodamage");
+	DispatchKeyFormat(iNoDamageFilter, "Negated", "0");
+	DispatchKeyFormat(iNoDamageFilter, "filterclass", "light");
 	SpawnAndActivate(iNoDamageFilter);
 
 	// filter_activator_team human.
 	int iHumanFilter1 = CreateEntityByName("filter_activator_team");
-	DispatchKeyFormat(iHumanFilter1, "targetname",      "item_filter_human");
-	DispatchKeyFormat(iHumanFilter1, "Negated",         "0");
-	DispatchKeyFormat(iHumanFilter1, "filterteam",      "3");
+	DispatchKeyFormat(iHumanFilter1, "targetname", "item_filter_human");
+	DispatchKeyFormat(iHumanFilter1, "Negated", "0");
+	DispatchKeyFormat(iHumanFilter1, "filterteam", "3");
 	SpawnAndActivate(iHumanFilter1);
 
 	// filter_activator_team human ignored.
 	int iHumanFilter2 = CreateEntityByName("filter_activator_team");
-	DispatchKeyFormat(iHumanFilter2, "targetname",      "item_filter_human_ignored");
-	DispatchKeyFormat(iHumanFilter2, "Negated",         "1");
-	DispatchKeyFormat(iHumanFilter2, "filterteam",      "3");
+	DispatchKeyFormat(iHumanFilter2, "targetname", "item_filter_human_ignored");
+	DispatchKeyFormat(iHumanFilter2, "Negated", "1");
+	DispatchKeyFormat(iHumanFilter2, "filterteam", "3");
 	SpawnAndActivate(iHumanFilter2);
 
 	// filter_damage_type human items.
 	int iHumanFilter3 = CreateEntityByName("filter_damage_type");
-	DispatchKeyFormat(iHumanFilter3, "targetname",      "item_filter_human_items");
-	DispatchKeyFormat(iHumanFilter3, "Negated",         "0");
-	DispatchKeyFormat(iHumanFilter3, "damagetype",      "512");
+	DispatchKeyFormat(iHumanFilter3, "targetname", "item_filter_human_items");
+	DispatchKeyFormat(iHumanFilter3, "Negated", "0");
+	DispatchKeyFormat(iHumanFilter3, "damagetype", "512");
 	SpawnAndActivate(iHumanFilter3);
 
 	// filter_multi humans.
 	int iHumanFilter4 = CreateEntityByName("filter_multi");
-	DispatchKeyFormat(iHumanFilter4, "targetname",      "item_filter_humans");
-	DispatchKeyFormat(iHumanFilter4, "Negated",         "0");
-	DispatchKeyFormat(iHumanFilter4, "filtertype",      "1");
-	DispatchKeyFormat(iHumanFilter4, "filter01",        "item_filter_human");
-	DispatchKeyFormat(iHumanFilter4, "filter02",        "item_filter_human_items");
+	DispatchKeyFormat(iHumanFilter4, "targetname", "item_filter_humans");
+	DispatchKeyFormat(iHumanFilter4, "Negated", "0");
+	DispatchKeyFormat(iHumanFilter4, "filtertype", "1");
+	DispatchKeyFormat(iHumanFilter4, "filter01", "item_filter_human");
+	DispatchKeyFormat(iHumanFilter4, "filter02", "item_filter_human_items");
 	SpawnAndActivate(iHumanFilter4);
 
 	// filter_activator_team zombie.
 	int iZombieFilter1 = CreateEntityByName("filter_activator_team");
-	DispatchKeyFormat(iZombieFilter1, "targetname",     "item_filter_zombie");
-	DispatchKeyFormat(iZombieFilter1, "Negated",        "0");
-	DispatchKeyFormat(iZombieFilter1, "filterteam",     "2");
+	DispatchKeyFormat(iZombieFilter1, "targetname", "item_filter_zombie");
+	DispatchKeyFormat(iZombieFilter1, "Negated", "0");
+	DispatchKeyFormat(iZombieFilter1, "filterteam", "2");
 	SpawnAndActivate(iZombieFilter1);
 
 	// filter_activator_team zombie ignored.
 	int iZombieFilter2 = CreateEntityByName("filter_activator_team");
-	DispatchKeyFormat(iZombieFilter2, "targetname",     "item_filter_zombie_ignored");
-	DispatchKeyFormat(iZombieFilter2, "Negated",        "1");
-	DispatchKeyFormat(iZombieFilter2, "filterteam",     "2");
+	DispatchKeyFormat(iZombieFilter2, "targetname", "item_filter_zombie_ignored");
+	DispatchKeyFormat(iZombieFilter2, "Negated", "1");
+	DispatchKeyFormat(iZombieFilter2, "filterteam", "2");
 	SpawnAndActivate(iZombieFilter2);
 
 	// filter_damage_type zombie items.
 	int iZombieFilter3 = CreateEntityByName("filter_damage_type");
-	DispatchKeyFormat(iZombieFilter3, "targetname",     "item_filter_zombie_items");
-	DispatchKeyFormat(iZombieFilter3, "Negated",        "0");
-	DispatchKeyFormat(iZombieFilter3, "damagetype",     "128");
+	DispatchKeyFormat(iZombieFilter3, "targetname", "item_filter_zombie_items");
+	DispatchKeyFormat(iZombieFilter3, "Negated", "0");
+	DispatchKeyFormat(iZombieFilter3, "damagetype", "128");
 	SpawnAndActivate(iZombieFilter3);
 
 	// filter_multi zombies.
 	int iZombieFilter4 = CreateEntityByName("filter_multi");
-	DispatchKeyFormat(iZombieFilter4, "targetname",     "item_filter_zombies");
-	DispatchKeyFormat(iZombieFilter4, "Negated",        "0");
-	DispatchKeyFormat(iZombieFilter4, "filtertype",     "1");
-	DispatchKeyFormat(iZombieFilter4, "filter01",       "item_filter_zombie");
-	DispatchKeyFormat(iZombieFilter4, "filter02",       "item_filter_zombie_items");
+	DispatchKeyFormat(iZombieFilter4, "targetname", "item_filter_zombies");
+	DispatchKeyFormat(iZombieFilter4, "Negated", "0");
+	DispatchKeyFormat(iZombieFilter4, "filtertype", "1");
+	DispatchKeyFormat(iZombieFilter4, "filter01", "item_filter_zombie");
+	DispatchKeyFormat(iZombieFilter4, "filter02", "item_filter_zombie_items");
 	SpawnAndActivate(iZombieFilter4);
 }

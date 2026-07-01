@@ -291,9 +291,6 @@ public void SpawnVortigaunt(float fOrigin[3])
 
 public void VortigauntPickup(const char[] output, int caller, int activator, float delay)
 {
-	char sBuffer[128];
-	Format(sBuffer, sizeof(sBuffer), "say ** %N has picked up Vortigaunt **", activator);
-	SetVariantString(sBuffer);
-	//AcceptEntityInput(g_iConsole, "Command");
+	ServerCommand("say ** %N has picked up Vortigaunt **", activator)
 	PrintToChat(activator, "Right Click to Pull Humans in front of you.");
 }
